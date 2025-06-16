@@ -97,5 +97,5 @@ func main() {
 	http.HandleFunc("/game/", gameHandler)
 	http.HandleFunc("/", requestHandler)
 
-	http.ListenAndServe(":44444", nil)
+	http.ListenAndServe(":80", nil)
 }
