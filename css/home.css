@@ -348,6 +348,55 @@ html {
     background-color: #0feedbc2;
 }
 
+.btn {
+    position: fixed;
+    color: black;
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+  
+.btn:hover {
+    background-color: #c7c7c7;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    color: #333;
+    font-size: 1rem;
+}
+
+.styled-select {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.5em 1em;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20,50 70,100 120,50' stroke='%23666' stroke-width='20' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1em center;
+    background-size: 1em;
+}
+
+.styled-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
 .close-btn {
     position: absolute;
     top: 10px;

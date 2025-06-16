@@ -87,7 +87,6 @@ const modal = document.getElementById('create-request-modal');
 const closeBtn = document.getElementById('close-create-modal');
 const playerList = document.getElementById('player-list');
 const searchInput = document.getElementById('player-search');
-const gameModeSelect = document.getElementById('game-mode');
 
 document.getElementById('open-create-request').addEventListener('click', () => {
   modal.classList.remove('hidden');
@@ -123,8 +122,8 @@ function renderPlayerList(searchTerm) {
     `;
 
     item.addEventListener('click', () => {
-      const selectedMode = gameModeSelect.value;
-      sendGameRequest(id, selectedMode);
+      const gameModeSelect = document.getElementById('game-mode');
+      sendGameRequest(id, gameModeSelect.value);
       modal.classList.add('hidden');
     });
     playerList.appendChild(item);
@@ -139,10 +138,9 @@ function sendGameRequest(playerId, mode) {
   switch (mode) {
     case "TicTacToe":
       view.setUint8(1, 1)
+      requests.set(playerId, 1)
       break
   }
   view.setUint8(2, playerId);
-
-  requests.set(playerId, mode)
   sendMessage(buffer);
 }

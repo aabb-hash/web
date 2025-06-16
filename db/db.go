@@ -2,6 +2,9 @@ package db
 
 import (
 	"database/sql"
+	"encoding/json"
+	"fmt"
+	"net/http"
 	"time"
 
 	_ "modernc.org/sqlite"
@@ -153,4 +156,31 @@ func GetStatsToOpponent(player string, opponent string) (int, int, int) {
 	stmt.Close()
 
 	return wins, draw, lose
+}
+
+type Player struct {
+	Name   string `json:"name"`
+	Wins   int    `json:"wins"`
+	Losses int    `json:"losses"`
+	Draws  int    `json:"draws"`
+}
+
+func RespondWithLeaderboard(w http.ResponseWriter, r *http.Request) {
+	rows, err := db.Query("SELECT username, win, lose, draw FROM statistics ORDER BY win DESC")
+	if err != nil {
+		http.Error(w, "DB error", http.StatusInternalServerError)
+		return
+	}
+	defer rows.Close()
+
+	var players []Player
+	for rows.Next() {
+		var p Player
+		rows.Scan(&p.Name, &p.Wins, &p.Losses, &p.Draws)
+		fmt.Println(p.Name)
+		players = append(players, p)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(players)
 }

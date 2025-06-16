@@ -1,6 +1,5 @@
 body {
-    background-color: #414141;
-    background: linear-gradient(164deg, #62867d 0%, #1d1d1d 100%);
+    background-color: #cecece;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,9 +41,57 @@ body {
     max-width: 400px;
     margin: 0 auto;
     padding: 50px;
-    background: #a06230;
+    background: #05444d;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     font-family: sans-serif;
 }
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1em; /* space between buttons */
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.6em 1.2em;
+    margin-top: 1em;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Submit-specific styling (optional for differentiation) */
+.submit-btn {
+    background-color: #28a745;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+/* Register button as a styled link */
+.login-btn {
+    background-color: #17a2b8;
+    padding: 0.6em 1.4em;
+    margin-left: 1em;
+}
+
+.login-btn:hover {
+    background-color: #117a8b;
+}
+
+
 

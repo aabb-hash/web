@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
 
@@ -24,6 +23,9 @@ func requestHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	case "register":
 		login.HandleRegister(w, r)
+		return
+	case "leaderboard":
+		logic.HandleLeaderboard(w, r)
 		return
 	case "api":
 		logic.HandleAPI(w, r)
@@ -48,7 +50,6 @@ func requestHandler(w http.ResponseWriter, r *http.Request) {
 var upgrader = websocket.Upgrader{}
 
 func wsHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("saopdko")
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		return

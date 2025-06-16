@@ -1,7 +1,7 @@
 const circle = document.getElementById("user");
 const keysDown = {};
-let x = 50;
-let y = 50;
+let x = window.innerWidth/2;
+let y = 100;
 const speed = 1;
 
 const maxX = window.innerWidth - 20
@@ -123,3 +123,5 @@ window.addEventListener('keyup', (e) => {
     key = getKey(e.key)
     keysDown[key] = false;
 });
+
+updatePosition()

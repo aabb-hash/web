@@ -1,6 +1,7 @@
 package tictactoe
 
 import (
+	"fmt"
 	"math/rand"
 	"net/http"
 
@@ -38,8 +39,8 @@ func LoadPlayer(gameID uint8, userID uint8, username string) {
 
 		game.move = 0
 
-		SendMessage(game.player1, 0, append([]byte{game.player2}, []byte(idToUsername[userID])...))
-		SendMessage(game.player2, 0, append([]byte{game.player1}, []byte(idToUsername[userID])...))
+		SendMessage(game.player1, 0, append([]byte{game.player2}, []byte(idToUsername[game.player2])...))
+		SendMessage(game.player2, 0, append([]byte{game.player1}, []byte(idToUsername[game.player1])...))
 
 		SendMessage(game.player1, 8, []byte{1})
 		SendMessage(game.player2, 8, []byte{0})
@@ -56,7 +57,7 @@ func LoadPlayer(gameID uint8, userID uint8, username string) {
 }
 
 func HandleLeave(userID uint8) {
-	for _, game := range gameMap {
+	for gameID, game := range gameMap {
 		if game.player1 == userID {
 			if game.move == -1 {
 				SendMessage(game.player2, 8, []byte{6})
@@ -64,6 +65,8 @@ func HandleLeave(userID uint8) {
 				SendMessage(game.player2, 8, []byte{2})
 				SendMessage(game.player2, 8, []byte{6})
 			}
+
+			cleanUp(gameID, game)
 		} else if game.player2 == userID {
 			if game.move == -1 {
 				SendMessage(game.player1, 8, []byte{6})
@@ -71,8 +74,18 @@ func HandleLeave(userID uint8) {
 				SendMessage(game.player1, 8, []byte{2})
 				SendMessage(game.player1, 8, []byte{6})
 			}
+
+			cleanUp(gameID, game)
 		}
 	}
+
+	delete(idToUsername, userID)
+}
+
+func cleanUp(gameID uint8, game *Game) {
+	delete(gameMap, gameID)
+	delete(playAgainMap, game.player1)
+	delete(playAgainMap, game.player2)
 }
 
 func PlayAgain(userID uint8, gameID uint8) {
@@ -192,6 +205,8 @@ func hasPlayer(game *Game, userID uint8) bool {
 func saveMatchAndStats(player1 uint8, player2 uint8, draw bool) {
 	username1 := idToUsername[player1]
 	username2 := idToUsername[player2]
+
+	fmt.Print(username1, username2)
 
 	db.SaveMatch(username1, username2, draw)
 

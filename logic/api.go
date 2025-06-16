@@ -123,6 +123,9 @@ func HandleAPI(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/plain")
 		fmt.Fprintf(w, "%d;%d;%d", win, draw, lose)
 		return
+	case "leaderboard":
+		db.RespondWithLeaderboard(w, r)
+		return
 	}
 
 	w.WriteHeader(204)

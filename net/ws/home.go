@@ -20,7 +20,7 @@ func Move(id uint8, data []byte) {
 }
 
 func Create(id uint8, username string) {
-	data := []byte{0x00, 0x32, 0x00, 0x32}
+	data := []byte{0x03, 0xB6, 0x00, 0x64}
 
 	positions[id] = data
 

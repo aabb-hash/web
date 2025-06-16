@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif;
+  background: #f8f8f8;
+  text-align: center;
+  padding: 2rem;
+}
+
+h1 {
+  color: #333;
+}
+
+table {
+  margin: 2rem auto;
+  border-collapse: collapse;
+  width: 80%;
+  max-width: 600px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+}
+
+th {
+  background: #eee;
+}
