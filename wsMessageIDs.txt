@@ -1,0 +1,9 @@
+0 - createUser          - server
+1 - move                - user -> server forwards
+2 - deleteUser          - server
+3 - updateYourPosition  - server
+4 - gameRequest         - user -> server forwards
+5 - gameRequestStatus   - both
+6 - connectionTransfer  - user
+7 - gameInput           - user -> server forwards
+8 - gameManagement      - server

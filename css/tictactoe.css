@@ -1,0 +1,257 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+    background: #f0f0f0;
+    font-family: sans-serif;
+}
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+}
+.cell {
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    position: relative;
+    cursor: pointer;
+}
+.cell.x::before,
+.cell.x::after {
+  content: '';
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  width: 80%;
+  height: 10px;
+  background: #333;
+  transform-origin: center;
+}
+.cell.x::before {
+  transform: translateX(-50%) rotate(45deg);
+}
+.cell.x::after {
+  transform: translateX(-50%) rotate(-45deg);
+}
+.cell.o::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 100px;
+  height: 100px;
+  border: 10px solid #333;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.cell:hover {
+    background: #e0e0e0;
+}
+.cell.top-left {
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+.cell.top {
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #333;
+}
+.cell.top-right {
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #333;
+}
+.cell.mid-left {
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+}
+.cell.mid {
+    border: 1px solid #333;
+}
+.cell.mid-right {
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #333;
+}
+.cell.bottom-left {
+    border-top: 1px solid #333;
+    border-right: 1px solid #333;
+}
+.cell.bottom {
+    border-top: 1px solid #333;
+    border-right: 1px solid #333;
+    border-left: 1px solid #333;
+}
+.cell.bottom-right {
+    border-top: 1px solid #333;
+    border-left: 1px solid #333;
+}
+
+
+.status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  background: #ccc;
+  transition: background 0.3s;
+  pointer-events: auto;
+}
+
+#me.player {
+  padding: 10px 80px 10px 10px;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    calc(100% - 20px) 100%,
+    0 100%
+  );
+}
+
+#opponent.player {
+  padding: 10px 10px 10px 80px;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    20px 100%
+  );
+}
+
+.player.active {
+  background: #fff;
+}
+
+.player img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+#me.player img {
+  margin-right: 10px;
+}
+#opponent.player img {
+  margin-left: 10px;
+}
+
+.player span {
+  font-weight: bold;
+}
+
+.game-result-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  max-width: 300px;
+  width: 90%;
+}
+
+.popup-content h1 {
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+.opponent-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.opponent-status img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.popup-buttons button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.popup-buttons button#returnHomeBtn {
+  background: #ee0f0f;
+}
+.popup-buttons button#playAgainBtn {
+  background: #24d60d;
+}
+
+.popup-buttons button#returnHomeBtn:hover {
+  background: #ff0000;
+}
+.popup-buttons button#playAgainBtn:hover {
+  background: #2bf510;
+}
+
+.scoreboard-block {
+  display: grid;
+  grid-template-columns: repeat(3, 20px);
+  grid-template-rows: repeat(2, 20px);
+  display: inline-block;
+  margin-top: 20px;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.scoreboard-block .row {
+  display: flex;
+  align-items: center;
+}
+
+.scoreboard-block .stat-cell {
+  padding: 4px 12px;
+  text-align: center;
+}
+
+.scoreboard-block .separator {
+  width: 1px;
+  height: 100%;
+  background: #ccc;
+}

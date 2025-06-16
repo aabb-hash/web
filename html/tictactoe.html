@@ -1,0 +1,47 @@
+<div class="status-bar">
+  <div id="me" class="player">
+    <img src="/api/avatar" alt="Me"/>
+  </div>
+  <div id="opponent" class="player">
+  </div>
+</div>
+
+<div class="game-wrapper">
+  <div class="board" id="board"></div>
+
+  <div class="scoreboard-block">
+  <div class="row labels">
+    <div class="stat-cell">Wins</div>
+    <div class="separator"></div>
+    <div class="stat-cell">Draws</div>
+    <div class="separator"></div>
+    <div class="stat-cell">Losses</div>
+  </div>
+  <div class="row values">
+    <div class="stat-cell" id="wins">0</div>
+    <div class="separator"></div>
+    <div class="stat-cell" id="draws">0</div>
+    <div class="separator"></div>
+    <div class="stat-cell" id="losses">0</div>
+  </div>
+</div>
+</div>
+
+<script src="/js/tictactoe/game.js"></script>
+<script src="/js/tictactoe/connection.js"></script>
+
+<div class="game-result-popup hidden" id="resultPopup">
+  <div class="popup-content">
+    <h1 id="resultTitle">You Won</h1>
+    <div class="opponent-status">
+      <img src="opponent-pfp.jpg" alt="Opponent Avatar" />
+      <span id="opponentText">Opponent - lost</span>
+    </div>
+    <div class="popup-buttons">
+      <button id="returnHomeBtn">Return to Home</button>
+      <button id="playAgainBtn">Play Again</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/tictactoe/end.js"></script>

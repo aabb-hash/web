@@ -1,0 +1,65 @@
+<script src="/js/home/connection.js"></script>
+<script src="/js/home/users.js"></script>
+
+<div class="users" id="user">
+    <img id="avatar" alt="" src="/api/avatar">
+</div>
+<script src="/js/home/homeMove.js"></script> 
+
+<div class="play-button-container">
+    <button id="open-create-request" class="play barrier">play</button>
+</div>
+
+<button class="settings-btn" id="openSettings">
+    <i class="fas fa-cog"></i>
+</button>
+
+<div class="modal-overlay" id="settingsModal">
+    <div class="modal-content">
+        <button class="close-btn" id="closeModal">&times;</button>
+        <h2>Settings</h2>
+        <form enctype="multipart/form-data" id="settingsForm">
+            <label for="newAvatar">Profile picture</label>
+            <input type="file" id="newAvatar", name="newAvatar" accept="image/png, image/jpeg">
+            <br><img id="preview" alt="Preview">
+
+            <label for="username">Change username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your new username">
+
+            <label for="password">Change password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your new password">
+
+            <button type="submit">Save Settings</button>
+        </form>
+    </div>
+</div>
+<script src="/js/home/settings.js"></script>
+
+<div id="game-requests-section" class="game-requests closed">
+    <button id="toggle-requests-btn" aria-label="Toggle requests section" title="Toggle requests"><i class="fas fa-chevron-left"></i></button>
+    <h3>Game Requests</h3>
+    <div class="requests-scroll-area">
+        <div id="requests" class="requests-list"></div>
+    </div>
+</div>
+
+<div id="create-request-modal" class="modal hidden">
+  <div class="modal-content">
+    <h2>Create Game Request</h2>
+
+    <label for="game-mode">Choose Game Mode:</label>
+    <select id="game-mode">
+        <option value="TicTacToe">TicTacToe</option>
+    </select>
+
+    <input type="text" id="player-search" placeholder="Search player..." />
+
+    <div class="requests-scroll-area">
+        <div id="player-list" class="player-list"></div>
+    </div>
+
+    <button class="close-btn" id="close-create-modal">&times;</button>
+  </div>
+</div>
+
+<script src="/js/home/gameRequests.js"></script>
